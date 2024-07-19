@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+  color: rgb( 128, 64, 128 );
+  background-color: transparent;
+}
+
+html { background-color: rgb( 32, 32, 32 ); }
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body > div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+}
+
+body > div > div {
+  width: 50%;
+  height: 256px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+progress::-moz-progress-bar,
+progress::-webkit-progress-bar {
+  background-color: rgb( 128, 64, 128 );
+}
+
+progress {
+  appearance: none;
+  border-width: 2px;
+  border-style: solid;
+  border-image: linear-gradient( 90deg, rgb( 128, 64, 128 ), rgb( 255, 255, 255 ) ) 1;
+}
