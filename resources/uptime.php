@@ -17,6 +17,7 @@ function get_uptime()
         }
         return 'unknown';
     } else {
-        return shell_exec("uptime");
+        $uptime = shell_exec("uptime");
+        return explode( ' up ', $uptime )[ 1 ]; 
     }
 }
