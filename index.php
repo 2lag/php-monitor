@@ -38,7 +38,7 @@
 
   <div>
     <div class="cpu">
-      <div class="dial" style="--progress: <?php echo normalize_degrees( $cpu, true ); ?>deg;" data-progress="<?php echo $cpu; ?>"></div>
+      <div class="dial" style="--progress: <?php echo normalize_degrees( $cpu, true ); ?>deg;" data-progress="<?php echo round( $cpu, 2 ); ?>"></div>
       <label>CPU Usage</label>
     </div>
 

@@ -40,6 +40,8 @@ body > div > div {
   justify-content: center;
 }
 
+.uptime { width: 100% !important; }
+
 progress::-moz-progress-bar,
 progress::-webkit-progress-bar {
   background-color: rgb( 128, 64, 128 );
