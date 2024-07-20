@@ -2,10 +2,6 @@
 <html>
 <head>
   <title>stats</title>
-  <script>
-    //function refresh_page( ) { location.reload( ); }
-    //setInterval( refresh_page, 5000 );
-  </script>
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
@@ -15,15 +11,28 @@
     require_once('resources/uptime.php');
     require_once('resources/disk.php');
     require_once('resources/cpu.php');
+    require_once('log.php');
 
     $memory_arr = get_server_memory( false );
     $memory = get_server_memory( true );
     $disk = get_all_disk_space( );
+    $uptime = get_uptime( );
     $cpu = get_cpu_usage( );
-  ?>
 
-  <!-- add https://stackoverflow.com/questions/14222138/css-progress-circle -->
-   <!-- + logging of values every 10 minutes, starting a new file daily -->
+    // log to daily file every 10 minutes
+    session_start( );
+    $time = time( );
+    if ( !isset( $_SESSION['last_log_time'] ) ) {
+      $_SESSION['last_log_time'] = $time;
+    }
+
+    if ( $time - $_SESSION['last_log_time'] >= 600 || $_SESSION['last_log_time'] == $time ) {
+      log_to_file( $cpu, $memory, $uptime );
+      $_SESSION['last_log_time'] = $time;
+    }
+
+    header( "Refresh: 10" );
+  ?>
 
   <h2>Resources</h2>
 
@@ -64,7 +73,7 @@
     <?php endforeach; ?>
 
     <div class="uptime">
-      <?php echo get_uptime(); ?>
+      <?php echo $uptime; ?>
       <label>Uptime</label>
     </div>
   </div>
