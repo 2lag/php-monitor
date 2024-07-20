@@ -41,7 +41,7 @@ function _get_cpu_usage_unix()
 }
 
 // Returns server load in percent (just number, without percent sign)
-function get_cpu_uasge()
+function get_cpu_usage()
 {
     $load = null;
 
